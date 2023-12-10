@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     //Здоровье игрока
@@ -20,6 +21,11 @@ public class Player : MonoBehaviour
     {
         health -= damage;
         print("Здоровье игрока: " + health);
+
+        if (health <= 0) {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(sceneIndex);
+        }
     }
  
     //Метод, увеличивающий число монеток
